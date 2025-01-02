@@ -27,3 +27,9 @@ body {
             #f97316 100%
     );
 }
+/* If you don't already have this in your CSS */
+:root {
+    --font-grandstander: var(--font-grandstander);
+    --font-geist-sans: var(--font-geist-sans);
+    --font-geist-mono: var(--font-geist-mono);
+}

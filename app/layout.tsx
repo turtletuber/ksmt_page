@@ -1,11 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Grandstander } from 'next/font/google'
+
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-montserrat',
+})
 
 const grandstander = Grandstander({
     subsets: ['latin'],
     weight: ['700', '800'],
-    variable: '--font-grandstander',
 })
 
 const geistSans = Geist({
@@ -29,11 +34,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
-        <head>
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@800&display=swap" rel="stylesheet" />
-        </head>
+        <html lang="en" className={`${grandstander.className}`}>
         <body>{children}</body>
         </html>
     )
