@@ -41,7 +41,7 @@ const HeroSection = () => {
             style={{ opacity }}
         >
           <h1
-              className="text-4xl md:text-6xl lg:text-8xl font-extrabold text-[#f8c738] text-center tracking-tight font-grandstander px-4"
+              className="text-4xl md:text-6xl lg:text-8xl font-extrabold text-[#f8c738] text-center tracking-wide font-grandstander px-4"
               style={{
                 WebkitTextStroke: '2px #e6b730',
                 textShadow: '4px 4px 0px #b88f22'
@@ -77,12 +77,12 @@ export default function Page() {
       image: `${IMAGEKIT_URL}/model_print.png`
     },
     {
-      title: 'expressing through digital design',
+      title: 'expressing with digital design',
       emoji: '🖥️',
       image: `${IMAGEKIT_URL}/digital_design.png`
     },
     {
-      title: 'exploring created digital worlds',
+      title: 'create digital worlds',
       emoji: '🌐',
       image: `${IMAGEKIT_URL}/digital_world.png`
     },
