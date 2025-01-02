@@ -18,18 +18,23 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
+export const metadata = {
+    title: 'Kids Should Make Things',
+    description: 'Empowering kids to create through hands-on projects',
+}
+
 export default function RootLayout({
                                        children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+                                   }: {
+    children: React.ReactNode
+}) {
     return (
         <html lang="en">
-        <body
-            className={`${geistSans.variable} ${geistMono.variable} ${grandstander.variable} antialiased`}
-        >
-        {children}
-        </body>
+        <head>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@800&display=swap" rel="stylesheet" />
+        </head>
+        <body>{children}</body>
         </html>
-    );
+    )
 }

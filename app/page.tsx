@@ -1,9 +1,7 @@
 'use client'
-import { Users, Sparkles, Heart } from 'lucide-react'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
-// Replace with your ImageKit URL
 const IMAGEKIT_URL = "https://ik.imagekit.io/klu2pqgpo"
 
 const HeroSection = () => {
@@ -23,7 +21,7 @@ const HeroSection = () => {
   const opacity = scrollY === null ? 1 : Math.max(0, Math.min(1, 1 - (scrollY / 100)))
 
   return (
-      <div className="relative w-full h-[70vh] mb-16">
+      <div className="relative w-full h-[50vh] md:h-[70vh] mb-8 md:mb-16">
         <Image
             src={`${IMAGEKIT_URL}/KSMT_hero.png`}
             alt="Kids Should Make Things Hero"
@@ -43,10 +41,10 @@ const HeroSection = () => {
             style={{ opacity }}
         >
           <h1
-              className="text-8xl font-extrabold text-[#f8c738] text-center tracking-tight font-grandstander"
+              className="text-4xl md:text-6xl lg:text-8xl font-extrabold text-[#f8c738] text-center tracking-tight font-grandstander px-4"
               style={{
                 WebkitTextStroke: '2px #e6b730',
-                textShadow: '4px 4px 0px #d4a928'
+                textShadow: '4px 4px 0px #b88f22'
               }}
           >
             KIDS SHOULD MAKE THINGS.
@@ -91,80 +89,86 @@ export default function Page() {
   ]
 
   return (
-      <div>
+      <div className="font-montserrat">
         <HeroSection />
 
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
           {/* Mission Statement */}
-          <div className="text-center mb-16">
-            <p className="text-xl mb-4">
+          <div className="text-center mb-16 md:mb-24">
+            <p className="text-xl md:text-2xl mb-6 font-medium">
               Our mission is to provide project plans, materials, and support to kids to create in their homes, libraries, and community spaces.
             </p>
-            <p className="text-lg font-bold mb-8">Everything they make, they keep.</p>
-            <button className="bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 transition-colors">
+            <p className="text-lg md:text-xl font-bold mb-8 md:mb-12">Everything they make, they keep.</p>
+            <button
+                className="shimmer-button px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold text-white hover:-translate-y-1 transition-all duration-200 ease-in-out"
+                style={{
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                }}
+            >
               Support a kid&apos;s project 💛
             </button>
           </div>
 
           {/* Projects Section */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Kids are capable of projects like...</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-16 md:mb-24">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12">Kids are capable of projects like...</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {projects.map((project, index) => (
-                  <div key={index} className="flex flex-col">
-                    <div className="relative aspect-square w-full mb-4 overflow-hidden rounded-lg bg-gray-100">
+                  <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200">
+                    <div className="relative aspect-square w-full">
                       <Image
                           src={project.image}
                           alt={project.title}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 768px) 100vw,
-                           (max-width: 1200px) 50vw,
-                           33vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
-                    <h3 className="text-lg font-semibold text-center">
-                      {project.title} {project.emoji}
-                    </h3>
+                    <div className="p-6">
+                      <h3 className="text-base md:text-lg font-semibold text-center">
+                        {project.title} {project.emoji}
+                      </h3>
+                    </div>
                   </div>
               ))}
             </div>
           </div>
+
           {/* Approach Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-green-50 p-6 rounded-lg">
-              <Users className="w-8 h-8 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Community</h3>
-              <p>By working with community spaces we pursue delivering <span className="text-green-600">directly to learners</span>.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24">
+            <div className="bg-green-50 p-6 md:p-8 rounded-lg text-center">
+              <div className="text-3xl md:text-4xl mb-6">👥</div>
+              <h3 className="text-lg md:text-xl font-bold mb-4">Community</h3>
+              <p className="text-sm md:text-base">By working with community spaces we pursue delivering <span className="text-green-600">directly to learners</span>.</p>
             </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <Sparkles className="w-8 h-8 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Interest Driven</h3>
-              <p><span className="text-blue-600">Learners have the choice</span> to personalize what they make within the scaffold of our projects.</p>
+            <div className="bg-blue-50 p-6 md:p-8 rounded-lg text-center">
+              <div className="text-3xl md:text-4xl mb-6">✨</div>
+              <h3 className="text-lg md:text-xl font-bold mb-4">Interest Driven</h3>
+              <p className="text-sm md:text-base"><span className="text-blue-600">Learners have the choice</span> to personalize what they make within the scaffold of our projects.</p>
             </div>
-            <div className="bg-purple-50 p-6 rounded-lg">
-              <Heart className="w-8 h-8 mb-4" />
-              <h3 className="text-xl font-bold mb-2">Scaled Support</h3>
-              <p>Human and AI chat systems <span className="text-purple-600">help learners overcome</span> technical and conceptual challenges.</p>
+            <div className="bg-purple-50 p-6 md:p-8 rounded-lg text-center">
+              <div className="text-3xl md:text-4xl mb-6">🫶</div>
+              <h3 className="text-lg md:text-xl font-bold mb-4">Scaled Support</h3>
+              <p className="text-sm md:text-base">Human and AI chat systems <span className="text-purple-600">help learners overcome</span> technical and conceptual challenges.</p>
             </div>
           </div>
 
           {/* Community Spaces */}
-          <div className="bg-gray-100 p-8 rounded-lg mb-16">
-            <h3 className="text-center mb-4">Community space includes:</h3>
-            <p className="text-center text-lg font-semibold mb-4">
+          <div className="bg-gray-100 p-8 md:p-12 rounded-lg mb-16 md:mb-24">
+            <h3 className="text-center mb-6">Community space includes:</h3>
+            <p className="text-center text-base md:text-lg font-semibold mb-6">
               Urban Neighborhood Centers • Local Libraries<br />
               Native American Tribal Centers • Rural Community Organizations
             </p>
-            <p className="text-center italic">
+            <p className="text-center italic text-sm md:text-base">
               &quot;Can I have a kit to take home and work on?&quot;<br />
               - my students
             </p>
           </div>
 
           {/* About Section */}
-          <div className="flex flex-col md:flex-row gap-8 mb-16">
-            <div className="relative w-48 h-48 rounded-full flex-shrink-0 mx-auto md:mx-0 overflow-hidden">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16 md:mb-24">
+            <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full flex-shrink-0 mx-auto md:mx-0 overflow-hidden">
               <Image
                   src={`${IMAGEKIT_URL}/mike.png`}
                   alt="Mike Amato"
@@ -173,14 +177,14 @@ export default function Page() {
               />
             </div>
             <div>
-              <h2 className="text-2xl font-bold mb-2">Mike Amato</h2>
-              <p className="italic mb-4">Mr. Mike or Maker Mike</p>
-              <p className="mb-4">
+              <h2 className="text-xl md:text-2xl font-bold mb-4 text-center md:text-left">Mike Amato</h2>
+              <p className="italic mb-6 text-center md:text-left">Mr. Mike or Maker Mike</p>
+              <p className="mb-6 text-sm md:text-base">
                 Growing up I experienced K-8 public school, online highschool, in-person & online university.
                 If I wasn&apos;t moving or doing, I wasn&apos;t learning. I wanted to make and create things.
                 Every day I thought, &quot;someone will come and fix this.&quot; Its 2024 and I&apos;m still waiting.
               </p>
-              <p className="font-bold">
+              <p className="font-bold text-sm md:text-base">
                 Kids Should Make Things is here to innovatively solve the problems that stand in the way
                 of kids seeing something inspiring and being able to make it.
               </p>
@@ -188,38 +192,43 @@ export default function Page() {
           </div>
 
           {/* Guiding Principles */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Guiding Principles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-purple-50 p-6 rounded-lg text-center">
-                <div className="text-3xl mb-4">🧰</div>
-                <p>Kits, content, and tech let us be there when we can&apos;t be in person.</p>
+          <div className="mb-16 md:mb-24">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Guiding Principles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <div className="bg-purple-50 p-6 md:p-8 rounded-lg text-center">
+                <div className="text-2xl md:text-3xl mb-6">🧰</div>
+                <p className="text-sm md:text-base">Kits, content, and tech let us be there when we can&apos;t be in person.</p>
               </div>
-              <div className="bg-blue-50 p-6 rounded-lg text-center">
-                <div className="text-3xl mb-4">🔥</div>
-                <p>Learning content should be as engaging as your favorite social feed.</p>
+              <div className="bg-blue-50 p-6 md:p-8 rounded-lg text-center">
+                <div className="text-2xl md:text-3xl mb-6">🔥</div>
+                <p className="text-sm md:text-base">Learning content should be as engaging as your favorite social feed.</p>
               </div>
-              <div className="bg-green-50 p-6 rounded-lg text-center">
-                <div className="text-3xl mb-4">💫</div>
-                <p>Create for all kids, knowing some learn without schools, systems, or guardians.</p>
+              <div className="bg-green-50 p-6 md:p-8 rounded-lg text-center">
+                <div className="text-2xl md:text-3xl mb-6">💫</div>
+                <p className="text-sm md:text-base">Create for all kids, knowing some learn without schools, systems, or guardians.</p>
               </div>
             </div>
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mb-16">
-            <button className="bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 transition-colors mb-4">
+          <div className="text-center mb-16 md:mb-24">
+            <button
+                className="shimmer-button px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold text-white hover:-translate-y-1 transition-all duration-200 ease-in-out"
+                style={{
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                }}
+            >
               Support a kid&apos;s project 💛
             </button>
-            <p className="italic">
+            <p className="italic mt-6 text-sm md:text-base">
               &quot;I could start a GoFundMe or something, so the other kids can experience it too.&quot;<br />
               - 8th grade student after STEM program ended
             </p>
           </div>
 
           {/* Footer */}
-          <footer className="text-center py-8 bg-gray-100 rounded-lg">
-            <p className="font-bold mb-2">© Kids Should Make Things (501c3)</p>
+          <footer className="text-center py-8 md:py-12 bg-gray-100 rounded-lg text-sm md:text-base">
+            <p className="font-bold mb-4">© Kids Should Make Things (501c3)</p>
             <p>Hands-on learning shouldn&apos;t be limited by location or resources.</p>
           </footer>
         </div>
