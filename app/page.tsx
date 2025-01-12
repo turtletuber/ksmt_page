@@ -100,6 +100,7 @@ export default function Page() {
             </p>
             <p className="text-lg md:text-xl font-bold mb-8 md:mb-12">Everything they make, they keep.</p>
             <button
+                onClick={() => window.open('https://donate.stripe.com/00g5mbflr4VRfM4145', '_blank')}
                 className="shimmer-button px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold text-white hover:-translate-y-1 transition-all duration-200 ease-in-out"
                 style={{
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
@@ -213,6 +214,7 @@ export default function Page() {
           {/* Call to Action */}
           <div className="text-center mb-16 md:mb-24">
             <button
+                onClick={() => window.open('https://donate.stripe.com/00g5mbflr4VRfM4145', '_blank')}
                 className="shimmer-button px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold text-white hover:-translate-y-1 transition-all duration-200 ease-in-out"
                 style={{
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
