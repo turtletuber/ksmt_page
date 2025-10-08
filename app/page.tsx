@@ -1,5 +1,6 @@
 
 import Image from 'next/image';
+import DonateButton from '@/components/DonateButton';
 
 const IMAGEKIT_URL = "https://ik.imagekit.io/klu2pqgpo"
 
@@ -15,8 +16,8 @@ const HeroSection = () => {
         <Image
           src={`${IMAGEKIT_URL}/KSMT_hero.png`}
           alt="Kids Should Make Things Hero"
-          width={500}
-          height={300}
+          width={1200}
+          height={720}
           className="w-full h-auto object-contain max-w-7xl"
         />
       </div>
@@ -71,38 +72,14 @@ export default function Page() {
           <p className="text-3xl md:text-4xl font-bold mb-8">
             Everything they make, they keep.
           </p>
-          <button
-            onClick={() => window.open('https://donate.stripe.com/00g5mbflr4VRfM4145', '_blank')}
-            className="px-10 py-5 text-2xl font-bold text-black bg-yellow-200 hover:bg-yellow-300 border-2 border-black rounded-lg shadow-lg"
-          >
-            Support a kid's project 💛
-          </button>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="scroll-section bg-green-100">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8">Kids are capable of projects like</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-white p-6 shadow-lg text-center rounded-lg">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={256}
-                height={256}
-                className="w-full h-64 object-cover mb-4 rounded-md"
-              />
-              <p className="text-xl font-semibold">{project.title} {project.emoji}</p>
-            </div>
-          ))}
+          <DonateButton />
         </div>
       </section>
 
       {/* Approach Section */}
       <section className="scroll-section bg-purple-100">
         <h2 className="text-4xl md:text-5xl font-bold mb-12">Our Approach</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="text-center bg-white p-8 rounded-lg shadow-lg">
             <div className="text-6xl mb-6">👥</div>
             <h3 className="text-3xl font-bold mb-4">Community</h3>
@@ -122,6 +99,50 @@ export default function Page() {
             <h3 className="text-3xl font-bold mb-4">Scaled Support</h3>
             <p className="text-xl leading-relaxed">
               Human and AI chat systems help learners overcome technical and conceptual challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="scroll-section bg-green-100">
+        <h2 className="text-5xl md:text-6xl font-bold mb-8">Kids are capable of projects like</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div key={index} className="bg-white p-4 shadow-lg text-center rounded-lg">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={310}
+                height={310}
+                className="w-full h-80 object-cover mb-4 rounded-md"
+              />
+              <p className="text-xl font-semibold">{project.title} {project.emoji}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Guiding Principles Section */}
+      <section className="scroll-section bg-orange-100">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12">Guiding Principles</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="text-center bg-white p-8 rounded-lg shadow-lg">
+            <div className="text-6xl mb-6">🧰</div>
+            <p className="text-xl leading-relaxed">
+              Kits, content, and tech let us be there when we can&apos;t be in person.
+            </p>
+          </div>
+          <div className="text-center bg-white p-8 rounded-lg shadow-lg">
+            <div className="text-6xl mb-6">🔥</div>
+            <p className="text-xl leading-relaxed">
+              Learning content should be as engaging as your favorite social feed.
+            </p>
+          </div>
+          <div className="text-center bg-white p-8 rounded-lg shadow-lg">
+            <div className="text-6xl mb-6">💫</div>
+            <p className="text-xl leading-relaxed">
+              Create for all kids, knowing some learn without schools, systems, or guardians.
             </p>
           </div>
         </div>
