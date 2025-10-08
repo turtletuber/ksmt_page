@@ -183,7 +183,7 @@ export default function Page() {
       <section className="scroll-section bg-gray-200">
         <footer className="text-center">
           <p className="text-2xl font-bold mb-4">© Kids Should Make Things (501c3)</p>
-          <p className="text-xl">Hands-on learning shouldn&apos;t be limited by location or resources.</p>
+          <p className="text-xl">Hands-on learning shouldn&apos;t be limited by location or resources 💛</p>
         </footer>
       </section>
     </main>
