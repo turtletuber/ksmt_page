@@ -1,5 +1,5 @@
 
-'use client'
+import Image from 'next/image';
 
 const IMAGEKIT_URL = "https://ik.imagekit.io/klu2pqgpo"
 
@@ -12,9 +12,11 @@ const HeroSection = () => {
         </h1>
       </div>
       <div className="bg-white p-4 shadow-lg rounded-md transform -rotate-2 mt-8">
-        <img
+        <Image
           src={`${IMAGEKIT_URL}/KSMT_hero.png`}
           alt="Kids Should Make Things Hero"
+          width={500}
+          height={300}
           className="w-full h-auto object-contain max-w-7xl"
         />
       </div>
@@ -84,9 +86,11 @@ export default function Page() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div key={index} className="bg-white p-6 shadow-lg text-center rounded-lg">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                width={256}
+                height={256}
                 className="w-full h-64 object-cover mb-4 rounded-md"
               />
               <p className="text-xl font-semibold">{project.title} {project.emoji}</p>
@@ -128,7 +132,7 @@ export default function Page() {
         <h2 className="text-4xl md:text-5xl font-bold mb-12">About the Founder</h2>
         <div className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <img
+            <Image
               src={`${IMAGEKIT_URL}/mike.png`}
               alt="Mike Amato"
               width={200}
@@ -144,7 +148,7 @@ export default function Page() {
                 </a>
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                Growing up I experienced K-8 public school, online highschool, in-person & online university. If I wasn't moving or doing, I wasn't learning. I wanted to make and create things. Every day I thought, "someone will come and fix this." Its 2025 and I'm still waiting.
+                Growing up I experienced K-8 public school, online highschool, in-person & online university. If I wasn&apos;t moving or doing, I wasn&apos;t learning. I wanted to make and create things. Every day I thought, &quot;someone will come and fix this.&quot; Its 2025 and I&apos;m still waiting.
               </p>
               <p className="font-bold text-xl">
                 Kids Should Make Things is here to innovatively solve the problems that stand in the way of kids seeing something inspiring and being able to make it.
@@ -158,7 +162,7 @@ export default function Page() {
       <section className="scroll-section bg-gray-200">
         <footer className="text-center">
           <p className="text-2xl font-bold mb-4">© Kids Should Make Things (501c3)</p>
-          <p className="text-xl">Hands-on learning shouldn't be limited by location or resources.</p>
+          <p className="text-xl">Hands-on learning shouldn&apos;t be limited by location or resources.</p>
         </footer>
       </section>
     </main>
