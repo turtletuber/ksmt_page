@@ -8,10 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-        grandstander: ['Grandstander', 'cursive'],
-      },
       fontSize: {
         // Responsive font sizes
         'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
