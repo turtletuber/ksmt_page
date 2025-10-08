@@ -106,18 +106,18 @@ export default function Page() {
 
       {/* Projects Section */}
       <section className="scroll-section bg-green-100">
-        <h2 className="text-5xl md:text-6xl font-bold mb-8">Kids are capable of projects like</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Kids are capable of projects like</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white p-4 shadow-lg text-center rounded-lg">
+            <div key={index} className="bg-white p-3 shadow-lg text-center rounded-lg">
               <Image
                 src={project.image}
                 alt={project.title}
-                width={310}
-                height={310}
-                className="w-full h-80 object-cover mb-4 rounded-md"
+                width={200}
+                height={200}
+                className="w-full h-56 object-cover mb-4 rounded-md"
               />
-              <p className="text-xl font-semibold">{project.title} {project.emoji}</p>
+              <p className="text-base font-semibold">{project.title} {project.emoji}</p>
             </div>
           ))}
         </div>
