@@ -13,15 +13,6 @@ const patrickHand = Patrick_Hand({
 const IMAGEKIT_URL = "https://ik.imagekit.io/klu2pqgpo"
 
 const HeroSection = () => {
-  const [isTorn, setIsTorn] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsTorn(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="scroll-section bg-blue-100 flex flex-col justify-center items-center">
       {/* Desktop: Single image */}
@@ -281,8 +272,8 @@ export default function Page() {
             <div className="absolute -top-4 -right-4 bg-yellow-200 p-4 rounded-md shadow-lg transform rotate-6 w-[180px] h-[180px] flex flex-col justify-center items-center relative">
               <div className="absolute top-0 left-0 right-0 h-8 bg-yellow-300"></div>
               <div className="pt-8">
-                <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>The kids call this "fire".</p>
-                <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>"These are some fire projects."</p>
+                <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>The kids call this &quot;fire&quot;.</p>
+                <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>&quot;These are some fire projects.&quot;</p>
               </div>
             </div>
           </div>
