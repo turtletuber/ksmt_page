@@ -8,16 +8,9 @@ export default {
   ],
   theme: {
     extend: {
-      fontSize: {
-        // Responsive font sizes
-        'hero': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'hero-mobile': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+      colors: {
+        'masking-tape': '#E2D5B5',
       },
-      spacing: {
-        // Responsive spacing
-        'hero-height': '70vh',
-        'hero-height-mobile': '50vh',
-      }
     },
     screens: {
       'sm': '640px',
@@ -27,5 +20,5 @@ export default {
       '2xl': '1536px',
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 } satisfies Config;
