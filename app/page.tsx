@@ -13,25 +13,85 @@ const patrickHand = Patrick_Hand({
 const IMAGEKIT_URL = "https://ik.imagekit.io/klu2pqgpo"
 
 const HeroSection = () => {
+  const [isTorn, setIsTorn] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTorn(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="scroll-section bg-blue-100 flex flex-col justify-center items-center">
-                  <div className="relative bg-white p-1 sm:p-2 md:p-4 shadow-lg rounded-md mt-4 sm:mt-8">
-                    <div className="absolute -top-4 -left-4 w-32 h-10 bg-masking-tape bg-opacity-50 transform -rotate-45 shadow-md"></div>
-                    <div className="absolute -top-4 -right-4 w-32 h-10 bg-masking-tape bg-opacity-50 transform rotate-45 shadow-md"></div>
-                    <Image
-                      src={`${IMAGEKIT_URL}/KSMT_hero.png`}
-                      alt="Kids Should Make Things Hero"
-                      width={1200}
-                      height={720}
-                      className="w-full h-auto object-contain max-w-7xl"
-                    />
-                  </div>
-                  <div className="text-center px-2 sm:px-4 md:px-8 mt-8">
-                    <h1 className={`${patrickHand.className} text-2xl sm:text-3xl md:text-6xl lg:text-8xl font-bold text-black tracking-wide`}>
-                      KIDS SHOULD MAKE THINGS.
-                    </h1>
-                  </div>
-                </section>
+      {/* Desktop: Single image */}
+      <div className="hidden md:block relative mt-4 sm:mt-8">
+        <div className="absolute -top-4 -left-4 w-32 h-10 bg-masking-tape bg-opacity-50 transform -rotate-45 shadow-md z-10"></div>
+        <div className="absolute -top-4 -right-4 w-32 h-10 bg-masking-tape bg-opacity-50 transform rotate-45 shadow-md z-10"></div>
+        <div className="shadow-xl">
+          <Image
+            src={`${IMAGEKIT_URL}/KSMT_hero.png`}
+            alt="Kids Should Make Things Hero"
+            width={1200}
+            height={720}
+            className="w-full h-auto object-contain max-w-7xl"
+          />
+        </div>
+      </div>
+
+      {/* Mobile: Torn halves with title in between */}
+      <div className="md:hidden w-full px-20 mt-4 flex flex-col gap-6">
+        {/* Left half */}
+        <div className="relative -translate-x-3 rotate-3">
+          <div className="absolute -top-2 -left-2 w-16 h-6 bg-masking-tape bg-opacity-50 transform -rotate-45 shadow-md z-10"></div>
+          <div className="shadow-xl overflow-hidden" style={{
+            clipPath: 'polygon(0 0, 100% 0, 98% 5%, 100% 10%, 97% 15%, 99% 20%, 96% 25%, 98% 30%, 95% 35%, 97% 40%, 94% 45%, 96% 50%, 93% 55%, 95% 60%, 92% 65%, 94% 70%, 91% 75%, 93% 80%, 90% 85%, 92% 90%, 89% 95%, 91% 100%, 0 100%)'
+          }}>
+            <div style={{ width: '200%' }}>
+              <Image
+                src={`${IMAGEKIT_URL}/KSMT_hero.png`}
+                alt="Kids Should Make Things Hero - Left"
+                width={1200}
+                height={720}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Title in the middle */}
+        <div className="text-center px-2 -my-2">
+          <h1 className={`${patrickHand.className} text-5xl font-bold text-black tracking-wide`}>
+            KIDS SHOULD MAKE THINGS.
+          </h1>
+        </div>
+
+        {/* Right half */}
+        <div className="relative translate-x-4 -rotate-2">
+          <div className="absolute -top-2 -right-2 w-16 h-6 bg-masking-tape bg-opacity-50 transform rotate-45 shadow-md z-10"></div>
+          <div className="shadow-xl overflow-hidden" style={{
+            clipPath: 'polygon(0 0, 9% 5%, 7% 10%, 10% 15%, 6% 20%, 8% 25%, 5% 30%, 7% 35%, 4% 40%, 6% 45%, 3% 50%, 5% 55%, 2% 60%, 4% 65%, 1% 70%, 3% 75%, 0% 80%, 2% 85%, 0% 90%, 1% 95%, 0 100%, 100% 100%, 100% 0)'
+          }}>
+            <div style={{ width: '200%', marginLeft: '-100%' }}>
+              <Image
+                src={`${IMAGEKIT_URL}/KSMT_hero.png`}
+                alt="Kids Should Make Things Hero - Right"
+                width={1200}
+                height={720}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop title stays below */}
+      <div className="hidden md:block text-center px-2 sm:px-4 md:px-8 mt-6 md:mt-8">
+        <h1 className={`${patrickHand.className} text-5xl sm:text-6xl md:text-6xl lg:text-8xl font-bold text-black tracking-wide`}>
+          KIDS SHOULD MAKE THINGS.
+        </h1>
+      </div>
+    </section>
   )
 }
             
@@ -73,7 +133,7 @@ const HeroSection = () => {
               useEffect(() => {
                     const interval = setInterval(() => {
                       setActiveIndex((prev) => (prev + 1) % projects.length);
-                    }, 8000);
+                    }, 3000);
                 return () => clearInterval(interval);
                 // eslint-disable-next-line react-hooks/exhaustive-deps
               }, []);
@@ -95,7 +155,7 @@ const HeroSection = () => {
                       return (
                         <div
                           key={project.title}
-                          className={`absolute w-full bg-white p-4 rounded-lg shadow-xl transition-all duration-700`}
+                          className={`absolute w-full bg-white p-4 shadow-xl transition-all duration-700`}
                           style={{
                             transform: `rotate(${isActive ? 0 : rotations[index]}deg) translateX(${isActive ? 0 : xOffsets[index]}px) translateY(${isActive ? -20 : yOffsets[index]}px) scale(${isActive ? 1.1 : scale})`,
                             transformOrigin: 'center center',
@@ -112,7 +172,7 @@ const HeroSection = () => {
                             />
                           </div>
                           <div className="mt-4">
-                            <p className={`${patrickHand.className} text-center text-gray-700 text-lg`}>
+                            <p className={`${patrickHand.className} text-center text-gray-700 text-xl md:text-2xl`}>
                               {project.title} {project.emoji}
                             </p>
                           </div>
@@ -145,9 +205,9 @@ export default function Page() {
 
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-12 text-center">Our Approach</h2>
 
-              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
+              <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 px-16 sm:px-12 md:px-4">
 
-                <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg flex flex-col">
+                <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg flex flex-col">
 
                   <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🏘️</div>
 
@@ -161,7 +221,7 @@ export default function Page() {
 
                 </div>
 
-                <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg flex flex-col">
+                <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg flex flex-col">
 
                   <div className="text-4xl sm:text-5xl md:text-6xl mb-4">✨</div>
 
@@ -175,7 +235,7 @@ export default function Page() {
 
                 </div>
 
-                <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg flex flex-col">
+                <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg flex flex-col">
 
                   <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🫶</div>
 
@@ -194,9 +254,17 @@ export default function Page() {
 
             <section className="scroll-section bg-orange-100 flex flex-col justify-center items-center">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-12 text-center">Guiding Principles</h2>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 px-16 sm:px-12 md:px-4">
           <div className="relative">
-            <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg">
+            <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg">
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-4">💫</div>
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                Knowing alot of kids learn without schools, systems, or guardians.
+              </p>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg">
               <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🧰</div>
               <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                 Kits, content, and tech let us be there when we can&apos;t be in person.
@@ -204,10 +272,10 @@ export default function Page() {
             </div>
           </div>
           <div className="relative">
-            <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg">
+            <div className="text-center bg-white p-4 sm:p-6 rounded-lg shadow-lg">
               <div className="text-4xl sm:text-5xl md:text-6xl mb-4">🔥</div>
               <p className="text-base sm:text-lg md:text-xl leading-relaxed">
-                Learning content should be as engaging as your favorite social feed.
+                Learning content as engaging as your favorite social feed.
               </p>
             </div>
             <div className="absolute -top-4 -right-4 bg-yellow-200 p-4 rounded-md shadow-lg transform rotate-6 w-[180px] h-[180px] flex flex-col justify-center items-center relative">
@@ -216,14 +284,6 @@ export default function Page() {
                 <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>The kids call this "fire".</p>
                 <p className={`${patrickHand.className} text-[1.55rem] leading-tight mb-0 text-center`}>"These are some fire projects."</p>
               </div>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="text-center bg-white p-4 sm:p-8 rounded-lg shadow-lg">
-              <div className="text-4xl sm:text-5xl md:text-6xl mb-4">💫</div>
-              <p className="text-base sm:text-lg md:text-xl leading-relaxed">
-                Knowing alot of kids learn without schools, systems, or guardians.
-              </p>
             </div>
           </div>
         </div>
